@@ -20,7 +20,6 @@ class OnboardingActivity : AppCompatActivity() {
             val fragment = SplashFragment()
             supportFragmentManager.beginTransaction().replace(R.id.fcvOnboarding, fragment)
                 .commit()
-
         }
 
     }
