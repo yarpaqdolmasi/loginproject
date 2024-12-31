@@ -2,8 +2,8 @@ package com.example.loginproject.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.onboardingproject.R
-import com.example.onboardingproject.databinding.OnboardingActivityBinding
+import com.example.loginproject.R
+import com.example.loginproject.databinding.OnboardingActivityBinding
 import com.example.loginproject.presentation.fragments.SplashFragment
 
 class OnboardingActivity : AppCompatActivity() {
