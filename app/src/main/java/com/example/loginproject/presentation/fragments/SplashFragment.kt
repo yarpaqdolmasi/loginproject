@@ -20,7 +20,7 @@ class SplashFragment : CoreFragment(R.layout.splash_fragment) {
     private fun delayFun(time: Long) {
         CoroutineScope(Dispatchers.Main).launch {
             delay(time)
-            val fragment = LoginFragment()
+            val fragment = OnboardingFragment()
             fragmentManager?.beginTransaction()?.replace(R.id.fcvOnboarding, fragment)?.commit()
         }
     }

@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_purple">#6C63FF</color>
+    <color name="text_main">#252525</color>
+    <color name="teal">#7AC2DC</color>
+    <color name="transparent_white">#19C4C433</color>
 
 </resources>
