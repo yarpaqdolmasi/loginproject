@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
+import com.example.loginproject.databinding.OnboardingActivityBinding
 
-open class CoreFragment(@LayoutRes private val layoutId: Int): Fragment() {
+open class CoreFragment(@LayoutRes private val layoutId: Int): Fragment(){
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
