@@ -74,6 +74,7 @@ class OnboardingFragment : CoreFragment(R.layout.onboarding_fragment) {
             if (vpOnboardingPages.currentItem < fragments.size - 1)
                 vpOnboardingPages.currentItem += 1
             else {
+                activity?.finish()
                 val intent = Intent(activity, LoginActivity::class.java)
                 activity?.startActivity(intent)
             }

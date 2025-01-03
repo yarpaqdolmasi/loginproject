@@ -24,6 +24,13 @@ class CredentialsManagerTest {
         assertEquals(false, isEmailValid)
     }
 
+    @Test
+    fun givenWrongEmailFormat_thenReturnFalse2() {
+        val credentialsManager = CredentialsManager()
+        val isEmailValid = credentialsManager.isEmailValid("@test@test.com")
+        assertEquals(false, isEmailValid)
+    }
+
     // Test proper email
     @Test
     fun givenProperEmail_thenReturnTrue() {
