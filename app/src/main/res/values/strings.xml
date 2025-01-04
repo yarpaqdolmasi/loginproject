@@ -10,4 +10,24 @@
 
     <string name="onboarding_page_3_title">Make connects with explora</string>
     <string name="onboarding_page_3_description">To your dream trip</string>
+
+    <string name="invalid_email">Invalid email</string>
+    <string name="invalid_password">Invalid password</string>
+
+    <string name="wrong_email_or_password">Wrong email or password</string>
+    <string name="registered_successfully">Account registered successfully</string>
+    <string name="already_registered">Email already registered. Try another.</string>
+
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_password">Enter your password</string>
+
+    <string name="valid_email">Valid email</string>
+    <string name="strong_password">Strong password</string>
+
+    <string name="already_have_account">Already have an account?</string>
+    <string name="log_in">Log in</string>
+    <string name="new_member">New member?</string>
+    <string name="register_now">Register now</string>
+
+    <string name="button_next">Next</string>
 </resources>

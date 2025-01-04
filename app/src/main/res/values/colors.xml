@@ -10,6 +10,7 @@
     <color name="main_purple">#6C63FF</color>
     <color name="text_main">#252525</color>
     <color name="teal">#7AC2DC</color>
+    <color name="faded_blue">#8BB0D0</color>
     <color name="transparent_white">#19FFFFFF</color>
 
 </resources>

@@ -12,13 +12,14 @@ import com.example.loginproject.core.CoreFragment
 import com.example.loginproject.data.CredentialsManager
 import com.example.loginproject.data.User
 import com.example.loginproject.databinding.LoginFragmentBinding
-import com.example.loginproject.presentation.activity.RegisterActivity
+import com.example.loginproject.presentation.activity.LoginActivity
+import com.example.loginproject.presentation.activity.MainActivity
 
 class LoginFragment : CoreFragment(R.layout.login_fragment) {
 
     private lateinit var binding: LoginFragmentBinding
 
-    private var credentialsManager = CredentialsManager()
+    private var credentialsManager: CredentialsManager? = null
 
     private var sharedPrefs: SharedPreferences? = null
 
@@ -38,6 +39,8 @@ class LoginFragment : CoreFragment(R.layout.login_fragment) {
             Context.MODE_PRIVATE
         )
 
+        credentialsManager = (activity as LoginActivity).credentialsManager
+
         initButtons()
     }
 
@@ -50,28 +53,27 @@ class LoginFragment : CoreFragment(R.layout.login_fragment) {
             if (isEmailValid) {
                 etEmail.error = null
             } else
-                etEmail.error = "Invalid email"
+                etEmail.error = getString(R.string.invalid_email)
             if (isPasswordValid) {
                 etPassword.error = null
             } else
-                etPassword.error = "Invalid password"
+                etPassword.error = getString(R.string.invalid_password)
             if (isEmailValid && isPasswordValid) {
                 sharedPrefs?.let {
-                    val isPasswordCorrect = credentialsManager.login(User(email, password), it)
+                    val isPasswordCorrect = credentialsManager?.login(User(email, password), it)
 
-                    if (isPasswordCorrect) {
-                        activity?.finish()
+                    if (isPasswordCorrect == true) {
+                        startActivity(Intent(context, MainActivity::class.java))
                     } else {
-                        etPassword.error = "Wrong email or password"
+                        etPassword.error = getString(R.string.wrong_email_or_password)
                     }
                 }
             }
         }
 
         tvRegisterNow.setOnClickListener {
-            activity?.finish()
-            val intent = Intent(context, RegisterActivity::class.java)
-            startActivity(intent)
+            parentFragmentManager.beginTransaction().replace(R.id.fcvLogin, RegisterFragment())
+                .commit()
         }
     }
 
