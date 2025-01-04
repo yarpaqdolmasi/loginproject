@@ -21,7 +21,5 @@ class OnboardingActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.fcvOnboarding, fragment)
                 .commit()
         }
-
     }
-
 }

@@ -17,6 +17,7 @@ class OnboardingItemFragment(var item: OnboardingItem): CoreFragment(R.layout.on
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         binding = OnboardingItemFragmentBinding.inflate(inflater)
         return binding.root
     }
