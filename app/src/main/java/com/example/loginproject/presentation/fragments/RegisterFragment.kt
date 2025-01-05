@@ -16,9 +16,12 @@ import com.example.loginproject.databinding.RegisterFragmentBinding
 import com.example.loginproject.presentation.activity.LoginActivity
 
 class RegisterFragment : CoreFragment(R.layout.register_fragment) {
+
     private lateinit var binding: RegisterFragmentBinding
+
     private var sharedPrefs: SharedPreferences? = null
-    private val credentialsManager = CredentialsManager()
+    private var credentialsManager: CredentialsManager? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,6 +37,7 @@ class RegisterFragment : CoreFragment(R.layout.register_fragment) {
             getString(R.string.shared_pref_name),
             Context.MODE_PRIVATE
         )
+        credentialsManager = (activity as LoginActivity).credentialsManager
 
         initButtons()
     }
@@ -42,30 +46,31 @@ class RegisterFragment : CoreFragment(R.layout.register_fragment) {
         btnNext.setOnClickListener {
             val isEmailValid = isEmailValid(etEmail.text.toString().trim().lowercase())
             val isPasswordValid = isPasswordValid(etPassword.text.toString())
-            if (isEmailValid) etEmail.error = null else etEmail.error = "Invalid email"
-            if (isPasswordValid) etPassword.error = null else etPassword.error = "Invalid password"
+            if (isEmailValid) etEmail.error = null else etEmail.error = getString(R.string.invalid_email)
+            if (isPasswordValid) etPassword.error = null else etPassword.error = getString(R.string.invalid_password)
 
             if (isEmailValid && isPasswordValid) {
                 sharedPrefs?.let { sharedPrefs ->
-                    val isRegistered = credentialsManager.register(
+                    val isRegistered = credentialsManager?.register(
                         User(
                             etEmail.text.toString().trim().lowercase(),
                             etPassword.text.toString(),
                         ),
                         sharedPrefs
                     )
-                    if (isRegistered) {
-                        Toast.makeText(context, "Registered successfully", Toast.LENGTH_SHORT)
+                    if (isRegistered == true) {
+                        Toast.makeText(context, getString(R.string.registered_successfully), Toast.LENGTH_SHORT)
                             .show()
                         startActivity(Intent(context, LoginActivity::class.java))
                     } else
-                        etEmail.error = "Email already registered"
+                        etEmail.error = getString(R.string.already_registered)
                 }
             }
         }
 
         tvLogIn.setOnClickListener {
-            startActivity(Intent(context, LoginActivity::class.java))
+            parentFragmentManager.beginTransaction().replace(R.id.fcvLogin, LoginFragment())
+                .commit()
         }
     }
 
